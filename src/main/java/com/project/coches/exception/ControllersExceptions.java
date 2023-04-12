@@ -10,7 +10,7 @@ public class ControllersExceptions {
 
     @ExceptionHandler(EmailValidationException.class)
     public ProblemDetail emailException(EmailValidationException emailValidationException) {
-        return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, emailValidationException.getMessage());
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, emailValidationException.getMessage());
     }
 
 }
