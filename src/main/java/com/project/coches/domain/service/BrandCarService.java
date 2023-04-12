@@ -1,8 +1,7 @@
 package com.project.coches.domain.service;
 
-import com.project.coches.domain.pojo.BrandCarPojo;
+import com.project.coches.domain.dto.BrandCarDto;
 import com.project.coches.domain.repository.IBrandCarRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +25,7 @@ public class BrandCarService implements IBrandCarService {
      * @return Lista con marcas de coches
      */
     @Override
-    public List<BrandCarPojo> getAll() {
+    public List<BrandCarDto> getAll() {
         return iBrandCarRepository.getAll();
     }
 
@@ -36,7 +35,7 @@ public class BrandCarService implements IBrandCarService {
      * @return Optional del marca coche encontrado
      */
     @Override
-    public Optional<BrandCarPojo> getBrandCar(Integer id) {
+    public Optional<BrandCarDto> getBrandCar(Integer id) {
         return iBrandCarRepository.getBrandCar(id);
     }
 
@@ -46,7 +45,7 @@ public class BrandCarService implements IBrandCarService {
      * @return Marca coche guardada
      */
     @Override
-    public BrandCarPojo save(BrandCarPojo newBrandCar) {
+    public BrandCarDto save(BrandCarDto newBrandCar) {
         return iBrandCarRepository.save(newBrandCar);
     }
 
@@ -56,7 +55,7 @@ public class BrandCarService implements IBrandCarService {
      * @return Optional con marca coche actualizada
      */
     @Override
-    public Optional<BrandCarPojo> update(BrandCarPojo newBrandCar) {
+    public Optional<BrandCarDto> update(BrandCarDto newBrandCar) {
 
         if (iBrandCarRepository.getBrandCar(newBrandCar.getId()).isEmpty()) {
             return Optional.empty();
