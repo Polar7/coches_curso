@@ -2,6 +2,7 @@ package com.project.coches.persistance.repository;
 
 import com.project.coches.domain.dto.BrandCarDto;
 import com.project.coches.domain.repository.IBrandCarRepository;
+import com.project.coches.persistance.crud.IBrandCarCrudRepository;
 import com.project.coches.persistance.entity.BrandCarEntity;
 import com.project.coches.persistance.mapper.IBrandCarMapper;
 import lombok.RequiredArgsConstructor;

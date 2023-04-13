@@ -3,6 +3,7 @@ package com.project.coches.domain.service;
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.dto.ResponseCustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
+import com.project.coches.domain.useCase.ICustomerUseCase;
 import com.project.coches.exception.EmailValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.Optional;
  */
 @RequiredArgsConstructor
 @Service
-public class CustomerService implements ICustomerService {
+public class CustomerService implements ICustomerUseCase {
 
     private final ICustomerRepository iCustomerRepository;
 
