@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * Entidad de coches
  */
@@ -47,7 +49,7 @@ public class CarEntity {
     @Column(name = "tipo_combustible")
     private String fuelType;
 
-    @Column(name = "cantidad_asientros")
+    @Column(name = "cantidad_asientos")
     private Integer numberSeats;
 
     @Column(name = "traccion")
@@ -66,4 +68,6 @@ public class CarEntity {
     @JoinColumn(name = "marca_coche_id", insertable = false, updatable = false)
     private BrandCarEntity brandCarEntity;
 
+    @OneToMany(mappedBy = "carEntity")
+    private List<CarPurchaseEntity> carPurchaseEntity;
 }
