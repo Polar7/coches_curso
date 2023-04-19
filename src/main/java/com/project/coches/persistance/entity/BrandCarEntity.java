@@ -33,4 +33,11 @@ public class BrandCarEntity {
     @OneToMany(mappedBy = "brandCarEntity", orphanRemoval = true)
     private List<CarEntity> carEntities;
 
+    @Override
+    public String toString() {
+        return "BrandCarEntity{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

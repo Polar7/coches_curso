@@ -21,6 +21,8 @@ public class CustomerDto {
 
     private String password;
 
+    private String rol;
+
     @Override
     public String toString() {
         return "CustomerDto{" +

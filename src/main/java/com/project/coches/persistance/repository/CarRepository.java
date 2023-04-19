@@ -37,6 +37,7 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public Optional<CarDto> getCar(Integer idCar) {
+        System.out.println(iCarCrudRepository.findById(idCar).get().getBrandCarEntity().toString());
         return iCarCrudRepository.findById(idCar)
                 .map(iCarMapper::toCarDto);
     }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter @Setter
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class CustomerEntity {
 
     @Id
@@ -32,6 +32,8 @@ public class CustomerEntity {
 
     @Column(name = "contrasenia")
     private String password;
+
+    private String rol;
 
     @OneToMany(mappedBy = "customerEntity")
     private List<PurchaseEntity> purchaseEntity;

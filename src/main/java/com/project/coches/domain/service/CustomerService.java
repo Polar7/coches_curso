@@ -1,11 +1,13 @@
 package com.project.coches.domain.service;
 
+import com.project.coches.security.Roles;
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.dto.ResponseCustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
 import com.project.coches.domain.useCase.ICustomerUseCase;
 import com.project.coches.exception.EmailValidationException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -20,6 +22,8 @@ import java.util.Optional;
 public class CustomerService implements ICustomerUseCase {
 
     private final ICustomerRepository iCustomerRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -37,17 +41,22 @@ public class CustomerService implements ICustomerUseCase {
         return iCustomerRepository.getCustomerByEmail(email);
     }
 
+    /**
+     * Guarda un nuevo cliente asignandole una nueva contraseña, colocandolo activo y rol por defecto
+     * @param newCustomer
+     * @return
+     */
     @Override
     public ResponseCustomerDto save(CustomerDto newCustomer) {
-
         if (!newCustomer.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
             throw new EmailValidationException();
         }
 
-        String passwordGenerated = generateRandomPassword(8);
-        newCustomer.setPassword(passwordGenerated);
+        String passwordGenerated = generateRandomPassword(10);
+        newCustomer.setPassword(passwordEncoder.encode(passwordGenerated));
         newCustomer.setActive(1);
+        newCustomer.setRol(Roles.CUSTOMER);
         iCustomerRepository.save(newCustomer);
 
         return new ResponseCustomerDto(passwordGenerated);

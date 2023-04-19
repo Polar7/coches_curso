@@ -3,7 +3,9 @@ package com.project.coches.domain.service;
 import com.project.coches.domain.dto.CarDto;
 import com.project.coches.domain.repository.ICarRepository;
 import com.project.coches.domain.useCase.ICarUseCase;
+import com.project.coches.exception.UnauthorizedException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,22 @@ public class CarService implements ICarUseCase {
 
     @Override
     public List<CarDto> getAll() {
+
+        System.out.println("lista de AUTORIDADES");
+        var listaRoles = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        System.out.println(listaRoles);
+/*
+        if (listaRoles.stream().noneMatch(rol -> String.valueOf(rol).equals("Customer"))) {
+            throw new UnauthorizedException();
+        }
+
+        if (listaRoles.stream().anyMatch(rol -> String.valueOf(rol).equals("Junior")) ) {
+            //llama al metodo del junior
+        }
+        if (listaRoles.stream().anyMatch(rol -> String.valueOf(rol).equals("Senior")) ) {
+            //llama al metodo del senior
+        }*/
+
         return iCarRepository.getAll();
     }
 

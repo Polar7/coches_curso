@@ -3,6 +3,7 @@ package com.project.coches.persistance.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -70,4 +71,28 @@ public class CarEntity {
 
     @OneToMany(mappedBy = "carEntity")
     private List<CarPurchaseEntity> carPurchaseEntity;
+
+
+    @Override
+    public String toString() {
+        return "CarEntity{" +
+                "codeCar=" + codeCar +
+                ", brandCarId=" + brandCarId +
+                ", reference='" + reference + '\'' +
+                ", price=" + price +
+                ", modelYear=" + modelYear +
+                ", color='" + color + '\'' +
+                ", horsepower=" + horsepower +
+                ", numberDoor=" + numberDoor +
+                ", engineDisplacement=" + engineDisplacement +
+                ", transmission='" + transmission + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", numberSeats=" + numberSeats +
+                ", traction=" + traction +
+                ", steering='" + steering + '\'' +
+                ", category='" + category + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                ", brandCarEntity=" + brandCarEntity.toString() +
+                '}';
+    }
 }
