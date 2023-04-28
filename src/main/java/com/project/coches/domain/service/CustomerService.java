@@ -1,5 +1,6 @@
 package com.project.coches.domain.service;
 
+import com.project.coches.exception.CustomerExistsException;
 import com.project.coches.security.Roles;
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.dto.ResponseCustomerDto;
@@ -48,9 +49,14 @@ public class CustomerService implements ICustomerUseCase {
      */
     @Override
     public ResponseCustomerDto save(CustomerDto newCustomer) {
+
         if (!newCustomer.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
             throw new EmailValidationException();
+        }
+
+        if (getCustomerByCardId(newCustomer.getCardId()).isPresent() || getCustomerByEmail(newCustomer.getEmail()).isPresent()) {
+            throw new CustomerExistsException();
         }
 
         String passwordGenerated = generateRandomPassword(10);

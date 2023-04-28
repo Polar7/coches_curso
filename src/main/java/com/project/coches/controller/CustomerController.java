@@ -1,7 +1,6 @@
 package com.project.coches.controller;
 
 import com.project.coches.domain.dto.CustomerDto;
-import com.project.coches.domain.dto.ResponseCustomerDto;
 import com.project.coches.domain.useCase.ICustomerUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,14 +29,6 @@ public class CustomerController {
     @GetMapping(path = "/email/{email}")
     public ResponseEntity<CustomerDto> getCustomerByEmail(@PathVariable String email) {
         return ResponseEntity.of(iCustomerUseCase.getCustomerByEmail(email));
-    }
-
-
-    @PostMapping()
-    public ResponseEntity<ResponseCustomerDto> save(@RequestBody CustomerDto customerDtoNew) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(iCustomerUseCase.save(customerDtoNew));
-
     }
 
     @PatchMapping
