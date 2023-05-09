@@ -4,7 +4,7 @@ public class Roles {
 
     public static final String CUSTOMER = "Customer";
 
-    public static final String ADMIN = "Administrador";
+    public static final String ADMIN = "Administrator";
 
 
 
