@@ -65,6 +65,8 @@ public class CarEntity {
     @Column(name = "ruta_imagen")
     private String imagePath;
 
+    private Integer stock;
+
     @ManyToOne
     @JoinColumn(name = "marca_coche_id", insertable = false, updatable = false)
     private BrandCarEntity brandCarEntity;

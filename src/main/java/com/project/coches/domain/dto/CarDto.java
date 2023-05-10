@@ -42,4 +42,6 @@ public class CarDto {
     private String category;
 
     private String imagePath;
+
+    private Integer stock;
 }
