@@ -48,9 +48,12 @@ spring:
             endpoint: https://keys-springboot-db.vault.azure.net/
 
   datasource:
-    url: ${spring-data-source-url}
-    username: ${spring-datasource-password}
-    password: ${spring-datasource-username}
+    #url: ${spring-data-source-url}
+    #username: ${spring-datasource-password}
+    #password: ${spring-datasource-username}
+    url: jdbc:postgresql://bd-springboot-coches.postgres.database.azure.com:5432/postgres
+    username: polar_devops@bd-springboot-coches
+    password: postgres1.
 
   jpa:
     database: postgresql
