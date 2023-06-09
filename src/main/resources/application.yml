@@ -1,0 +1,62 @@
+spring:
+  profiles:
+    active: dev
+
+server:
+  servlet:
+    context-path: /api
+
+jwt:
+  secret:
+    key: LLAVE_SECRETA
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/coches_curso
+    username: postgres
+    password: postgres
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+---
+
+spring:
+
+  config:
+    activate:
+      on-profile: prod
+
+  cloud:
+    azure:
+      keyvault:
+        secret:
+          property-sources[0]:
+            endpoint: https://keys-springboot-db.vault.azure.net/
+
+  datasource:
+    url: ${spring-data-source-url}
+    username: ${spring-datasource-password}
+    password: ${spring-datasource-username}
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+
+
