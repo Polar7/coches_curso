@@ -49,6 +49,10 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
+bootJar {
+	archiveFileName = 'my-application.jar' // Nombre personalizado del archivo JAR
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
