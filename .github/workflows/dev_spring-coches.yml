@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: gradlew build -Pspring.profiles.active=prod
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
