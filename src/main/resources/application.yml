@@ -51,9 +51,9 @@ spring:
     #url: ${spring-data-source-url}
     #username: ${spring-datasource-password}
     #password: ${spring-datasource-username}
-    url: jdbc:postgresql://bd-springboot-coches.postgres.database.azure.com:5432/postgres
-    username: polar_devops@bd-springboot-coches
-    password: postgres1.
+    url: jdbc:postgresql://localhost:5432/coches_curso
+    username: postgres
+    password: postgres
 
   jpa:
     database: postgresql
