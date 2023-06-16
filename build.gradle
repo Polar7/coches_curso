@@ -36,7 +36,7 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 	implementation 'com.auth0:java-jwt:4.4.0'
-	implementation 'com.azure.spring:spring-cloud-azure-starter'
+	implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
 
 	compileOnly 'org.projectlombok:lombok'
 

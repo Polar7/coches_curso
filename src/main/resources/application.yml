@@ -44,16 +44,19 @@ spring:
     azure:
       keyvault:
         secret:
+          property-source-enabled: true
           property-sources[0]:
             endpoint: https://keys-springboot-db.vault.azure.net/
+            profile:
+              tenant-id: 41353d1e-2028-4a01-9f61-3761d8af2071
+            credential:
+              client-id: 9b900559-e1d4-454b-8c85-8fcd32444729
+              client-secret: xAC8Q~m32OuWyr3oa-j_WH3FMU~ZvD0wdddCocGD
 
   datasource:
-    #url: ${spring-data-source-url}
-    #username: ${spring-datasource-password}
-    #password: ${spring-datasource-username}
-    url: jdbc:postgresql://bd-springboot-coches.postgres.database.azure.com:5432/postgres
-    username: polar_devops@bd-springboot-coches
-    password: postgres1.
+    url: ${spring-data-source-url}
+    #username: ${spring-datasource-username}
+    #password: ${spring-datasource-password}
 
   jpa:
     database: postgresql
